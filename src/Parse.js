@@ -91,15 +91,21 @@ Object.defineProperty(Parse, 'liveQueryServerURL', {
 /** End setters **/
 
 Parse.ACL = require('./ParseACL');
+/*
 Parse.Analytics = require('./Analytics');
+*/
 Parse.Cloud = require('./Cloud');
 Parse.CoreManager = require('./CoreManager');
 Parse.Config = require('./ParseConfig');
 Parse.Error = require('./ParseError');
+/*
 Parse.FacebookUtils = require('./FacebookUtils');
+*/
 Parse.File = require('./ParseFile');
 Parse.GeoPoint = require('./ParseGeoPoint');
+/*
 Parse.Installation = require('./ParseInstallation');
+*/
 Parse.Object = require('./ParseObject');
 Parse.Op = {
   Set: ParseOp.SetOp,
@@ -111,15 +117,19 @@ Parse.Op = {
   Relation: ParseOp.RelationOp
 };
 Parse.Promise = require('./ParsePromise');
+/*
 Parse.Push = require('./Push');
+*/
 Parse.Query = require('./ParseQuery');
 Parse.Relation = require('./ParseRelation');
 Parse.Role = require('./ParseRole');
 Parse.Session = require('./ParseSession');
 Parse.Storage = require('./Storage');
 Parse.User = require('./ParseUser');
+/*
 Parse.LiveQuery = require('./ParseLiveQuery');
 Parse.LiveQueryClient = require('./LiveQueryClient');
+*/
 
 Parse._request = function(...args) {
   return CoreManager.getRESTController().request.apply(null, args);

@@ -16,7 +16,9 @@ import type ParseObject from './ParseObject';
 import type ParsePromise from './ParsePromise';
 import type { QueryJSON } from './ParseQuery';
 import type { ParseUser, AuthData } from './ParseUser';
+/*
 import type { PushData } from './Push';
+*/
 
 type RequestOptions = {
   useMasterKey?: boolean;
@@ -63,9 +65,11 @@ type ObjectStateController = {
   enqueueTask: (obj: any, task: () => ParsePromise) => ParsePromise;
   clearAllState: () => void;
 };
+/*
 type PushController = {
   send: (data: PushData, options: RequestOptions) => ParsePromise;
 };
+*/
 type QueryController = {
   find: (className: string, params: QueryJSON, options: RequestOptions) => ParsePromise;
 };
@@ -310,6 +314,7 @@ module.exports = {
     return config['ObjectStateController'];
   },
 
+  /*
   setPushController(controller: PushController) {
     if (typeof controller.send !== 'function') {
       throw new Error('PushController must implement send()');
@@ -320,6 +325,7 @@ module.exports = {
   getPushController(): PushController {
     return config['PushController'];
   },
+  */
 
   setQueryController(controller: QueryController) {
     if (typeof controller.find !== 'function') {
