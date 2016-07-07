@@ -1,1 +1,5 @@
-export default class ParseACL {}
+export default class ParseACL {
+  toJSON() {
+    return {};
+  }
+}

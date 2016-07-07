@@ -78,6 +78,7 @@ export default class ParseUser extends ParseObject {
    * call linkWith on the user (even if it doesn't exist yet on the server).
    * @method _linkWith
    */
+  /*
   _linkWith(provider, options: { authData?: AuthData }): ParsePromise {
     var authType;
     if (typeof provider === 'string') {
@@ -123,12 +124,14 @@ export default class ParseUser extends ParseObject {
       return promise;
     }
   }
+  */
 
   /**
    * Synchronizes auth data for a provider (e.g. puts the access token in the
    * right place to be used by the Facebook SDK).
    * @method _synchronizeAuthData
    */
+  /*
   _synchronizeAuthData(provider: string) {
     if (!this.isCurrent() || !provider) {
       return;
@@ -149,11 +152,13 @@ export default class ParseUser extends ParseObject {
       this._unlinkFrom(provider);
     }
   }
+  */
 
   /**
    * Synchronizes authData for all providers.
    * @method _synchronizeAllAuthData
    */
+  /*
   _synchronizeAllAuthData() {
     var authData = this.get('authData');
     if (typeof authData !== 'object') {
@@ -164,12 +169,14 @@ export default class ParseUser extends ParseObject {
       this._synchronizeAuthData(key);
     }
   }
+  */
 
   /**
    * Removes null values from authData (which exist temporarily for
    * unlinking)
    * @method _cleanupAuthData
    */
+  /*
   _cleanupAuthData() {
     if (!this.isCurrent()) {
       return;
@@ -185,11 +192,13 @@ export default class ParseUser extends ParseObject {
       }
     }
   }
+  */
 
   /**
    * Unlinks a user from a service.
    * @method _unlinkFrom
    */
+  /*
   _unlinkFrom(provider, options?: FullOptions) {
     var authType;
     if (typeof provider === 'string') {
@@ -203,11 +212,13 @@ export default class ParseUser extends ParseObject {
       return ParsePromise.as(this);
     })._thenRunCallbacks(options);
   }
+  */
 
   /**
    * Checks whether a user is linked to a service.
    * @method _isLinked
    */
+  /*
   _isLinked(provider): boolean {
     var authType;
     if (typeof provider === 'string') {
@@ -218,11 +229,13 @@ export default class ParseUser extends ParseObject {
     var authData = this.get('authData') || {};
     return !!authData[authType];
   }
+  */
 
   /**
    * Deauthenticates all providers.
    * @method _logOutWithAll
    */
+  /*
   _logOutWithAll() {
     var authData = this.get('authData');
     if (typeof authData !== 'object') {
@@ -233,12 +246,14 @@ export default class ParseUser extends ParseObject {
       this._logOutWith(key);
     }
   }
+  */
 
   /**
    * Deauthenticates a single provider (e.g. removing access tokens from the
    * Facebook SDK).
    * @method _logOutWith
    */
+  /*
   _logOutWith(provider) {
     if (!this.isCurrent()) {
       return;
@@ -250,6 +265,7 @@ export default class ParseUser extends ParseObject {
       provider.deauthenticate();
     }
   }
+  */
 
   /**
    * Class instance method used to maintain specific keys when a fetch occurs.
@@ -370,6 +386,7 @@ export default class ParseUser extends ParseObject {
    * @return {Parse.Promise} A promise that is fulfilled when the signup
    *     finishes.
    */
+  /*
   signUp(attrs: AttributeMap, options: FullOptions): ParsePromise {
     options = options || {};
 
@@ -388,6 +405,7 @@ export default class ParseUser extends ParseObject {
       signupOptions
     )._thenRunCallbacks(options, this);
   }
+  */
 
   /**
    * Logs in a Parse.User. On success, this saves the session to disk,
@@ -403,6 +421,7 @@ export default class ParseUser extends ParseObject {
    * @return {Parse.Promise} A promise that is fulfilled with the user when
    *     the login is complete.
    */
+  /*
   logIn(options: FullOptions): ParsePromise {
     options = options || {};
 
@@ -417,6 +436,7 @@ export default class ParseUser extends ParseObject {
     var controller = CoreManager.getUserController();
     return controller.logIn(this, loginOptions)._thenRunCallbacks(options, this);
   }
+  */
 
   /**
    * Wrap the default save behavior with functionality to save to local
@@ -546,6 +566,7 @@ export default class ParseUser extends ParseObject {
    * @return {Parse.Promise} A promise that is fulfilled with the user when
    *     the signup completes.
    */
+  /*
   static signUp(username, password, attrs, options) {
     attrs = attrs || {};
     attrs.username = username;
@@ -553,6 +574,7 @@ export default class ParseUser extends ParseObject {
     var user = new ParseUser(attrs);
     return user.signUp({}, options);
   }
+  */
 
   /**
    * Logs in a user with a username (or email) and password. On success, this
@@ -569,6 +591,7 @@ export default class ParseUser extends ParseObject {
    * @return {Parse.Promise} A promise that is fulfilled with the user when
    *     the login completes.
    */
+  /*
   static logIn(username, password, options) {
     if (typeof username !== 'string') {
       return ParsePromise.error(
@@ -589,6 +612,7 @@ export default class ParseUser extends ParseObject {
     user._finishFetch({ username: username, password: password });
     return user.logIn(options);
   }
+  */
 
   /**
    * Logs in a user with a session token. On success, this saves the session
@@ -623,9 +647,11 @@ export default class ParseUser extends ParseObject {
     return controller.become(becomeOptions)._thenRunCallbacks(options);
   }
 
+  /*
   static logInWith(provider, options) {
     return ParseUser._logInWith(provider, options);
   }
+  */
 
   /**
    * Logs out the currently logged in user session. This will remove the
@@ -660,6 +686,7 @@ export default class ParseUser extends ParseObject {
    * @param {Object} options A Backbone-style options object.
    * @static
    */
+  /*
   static requestPasswordReset(email, options) {
     options = options || {};
 
@@ -673,6 +700,7 @@ export default class ParseUser extends ParseObject {
       email, requestOptions
     )._thenRunCallbacks(options);
   }
+  */
 
   /**
    * Allow someone to define a custom User class without className
@@ -702,6 +730,7 @@ export default class ParseUser extends ParseObject {
    *   completed. If a replacement session token is requested, the promise
    *   will be resolved after a new token has been fetched.
    */
+  /*
   static enableRevocableSession(options) {
     options = options || {};
     CoreManager.set('FORCE_REVOCABLE_SESSION', true);
@@ -713,6 +742,7 @@ export default class ParseUser extends ParseObject {
     }
     return ParsePromise.as()._thenRunCallbacks(options);
   }
+  */
 
   /**
    * Enables the use of become or the current user in a server
@@ -746,10 +776,12 @@ export default class ParseUser extends ParseObject {
     });
   }
 
+  /*
   static _logInWith(provider, options) {
     var user = new ParseUser();
     return user._linkWith(provider, options);
   }
+  */
 
   static _clearCache() {
     currentUserCache = null;
@@ -784,8 +816,8 @@ var DefaultController = {
 
   setCurrentUser(user) {
     currentUserCache = user;
-    user._cleanupAuthData();
-    user._synchronizeAllAuthData();
+    // user._cleanupAuthData();
+    // user._synchronizeAllAuthData();
     return DefaultController.updateUserOnDisk(user);
   },
 
@@ -825,7 +857,7 @@ var DefaultController = {
     }
     var current = ParseObject.fromJSON(userData);
     currentUserCache = current;
-    current._synchronizeAllAuthData();
+    // current._synchronizeAllAuthData();
     return current;
   },
 
@@ -861,11 +893,12 @@ var DefaultController = {
       }
       var current = ParseObject.fromJSON(userData);
       currentUserCache = current;
-      current._synchronizeAllAuthData();
+      // current._synchronizeAllAuthData();
       return ParsePromise.as(current);
     });
   },
 
+  /*
   signUp(user: ParseUser, attrs: AttributeMap, options: RequestOptions): ParsePromise {
     var username = (attrs && attrs.username) || user.get('username');
     var password = (attrs && attrs.password) || user.get('password');
@@ -925,6 +958,7 @@ var DefaultController = {
       return DefaultController.setCurrentUser(user);
     });
   },
+  */
 
   become(options: RequestOptions): ParsePromise {
     var user = new ParseUser();
@@ -952,7 +986,7 @@ var DefaultController = {
             );
           });
         }
-        currentUser._logOutWithAll();
+        // currentUser._logOutWithAll();
         currentUser._finishFetch({ sessionToken: undefined });
       }
       currentUserCacheMatchesDisk = true;
@@ -962,6 +996,7 @@ var DefaultController = {
     });
   },
 
+  /*
   requestPasswordReset(email: string, options: RequestOptions) {
     var RESTController = CoreManager.getRESTController();
     return RESTController.request(
@@ -971,6 +1006,7 @@ var DefaultController = {
       options
     );
   },
+  */
   
   /*
   upgradeToRevocableSession(user: ParseUser, options: RequestOptions) {
@@ -1004,6 +1040,7 @@ var DefaultController = {
   },
   */
 
+  /*
   linkWith(user: ParseUser, authData: AuthData) {
     return user.save({ authData }).then(() => {
       if (canUseCurrentUser) {
@@ -1012,6 +1049,7 @@ var DefaultController = {
       return user;
     });
   }
+  */
 };
 
 CoreManager.setUserController(DefaultController);

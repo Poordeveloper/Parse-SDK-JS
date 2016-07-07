@@ -103,14 +103,16 @@ type UserController = {
   setCurrentUser: (user: ParseUser) => ParsePromise;
   currentUser: () => ?ParseUser;
   currentUserAsync: () => ParsePromise;
-  signUp: (user: ParseUser, attrs: AttributeMap, options: RequestOptions) => ParsePromise;
-  logIn: (user: ParseUser, options: RequestOptions) => ParsePromise;
+  // signUp: (user: ParseUser, attrs: AttributeMap, options: RequestOptions) => ParsePromise;
+  // logIn: (user: ParseUser, options: RequestOptions) => ParsePromise;
   become: (options: RequestOptions) => ParsePromise;
   logOut: () => ParsePromise;
-  requestPasswordReset: (email: string, options: RequestOptions) => ParsePromise;
+  // requestPasswordReset: (email: string, options: RequestOptions) => ParsePromise;
   updateUserOnDisk: (user: ParseUser) => ParsePromise;
+  /*
   upgradeToRevocableSession: (user: ParseUser, options: RequestOptions) => ParsePromise;
   linkWith: (user: ParseUser, authData: AuthData) => ParsePromise;
+  */
 };
 
 var config: { [key: string]: mixed } = {
@@ -407,6 +409,7 @@ module.exports = {
   },
 
   setUserController(controller: UserController) {
+    /*
     if (typeof controller.setCurrentUser !== 'function') {
       throw new Error(
         'A UserController must implement setCurrentUser()'
@@ -457,6 +460,7 @@ module.exports = {
         'A UserController must implement linkWith()'
       );
     }
+    */
     config['UserController'] = controller;
   },
 
@@ -464,6 +468,7 @@ module.exports = {
     return config['UserController'];
   },
 
+  /*
   setLiveQueryController(controller: any) {
     if (typeof controller.subscribe !== 'function') {
       throw new Error('LiveQueryController must implement subscribe()');
@@ -483,4 +488,5 @@ module.exports = {
   getLiveQueryController(): any {
     return config['LiveQueryController'];
   }
+  */
 }
