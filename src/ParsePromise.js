@@ -106,11 +106,11 @@ export default class ParsePromise {
     var wrappedResolvedCallback = function(...results) {
       if (typeof resolvedCallback === 'function') {
         if (isPromisesAPlusCompliant) {
-          //try {
+          try {
             results = [resolvedCallback.apply(this, results)];
-          //} catch (e) {
-          //  results = [ParsePromise.error(e)];
-          //}
+          } catch (e) {
+            results = [ParsePromise.error(e)];
+          }
         } else {
           results = [resolvedCallback.apply(this, results)];
         }
@@ -130,11 +130,11 @@ export default class ParsePromise {
       var result = [];
       if (typeof rejectedCallback === 'function') {
         if (isPromisesAPlusCompliant) {
-          //try {
+          try {
             result = [rejectedCallback(error)];
-          //} catch (e) {
-          //  result = [ParsePromise.error(e)];
-          //}
+          } catch (e) {
+            result = [ParsePromise.error(e)];
+          }
         } else {
           result = [rejectedCallback(error)];
         }

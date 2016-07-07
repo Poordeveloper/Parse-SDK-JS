@@ -56,6 +56,7 @@ export default class ParseUser extends ParseObject {
    * @return {Parse.Promise} A promise that is resolved when the replacement
    *   token has been fetched.
    */
+  /*
   _upgradeToRevocableSession(options: RequestOptions): ParsePromise {
     options = options || {};
 
@@ -70,6 +71,7 @@ export default class ParseUser extends ParseObject {
       upgradeOptions
     )._thenRunCallbacks(options);
   }
+  */
 
   /**
    * Unlike in the Android/iOS SDKs, logInWith is unnecessary, since you can
@@ -969,7 +971,8 @@ var DefaultController = {
       options
     );
   },
-
+  
+  /*
   upgradeToRevocableSession(user: ParseUser, options: RequestOptions) {
     var token = user.getSessionToken();
     if (!token) {
@@ -999,6 +1002,7 @@ var DefaultController = {
       return ParsePromise.as(user);
     });
   },
+  */
 
   linkWith(user: ParseUser, authData: AuthData) {
     return user.save({ authData }).then(() => {
