@@ -283,7 +283,8 @@ export default class ParseQuery {
         if (!data.className) {
           data.className = override;
         }
-        return ParseObject.fromJSON(data, true);
+        return ParseObject.fromJSON(data,
+            typeof options.override === 'undefined' ? true : options.override);
       });
     })._thenRunCallbacks(options);
   }
